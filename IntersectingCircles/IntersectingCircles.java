@@ -16,9 +16,7 @@ public class IntersectingCircles {
             int yCoor2 = input.nextInt();
             System.out.println("Enter the radius of circle 2");
             int radius2 = input.nextInt();
-            double xDiffSqu = Math.pow(xCoor1 - xCoor2, 2);
-            double yDiffSqu = Math.pow(yCoor1 - yCoor2, 2);
-            double distance = Math.sqrt(xDiffSqu + yDiffSqu);
+            double distance = Math.sqrt(Math.pow(xCoor1 - xCoor2, 2) + Math.pow(yCoor1 - yCoor2, 2));
 
             if (radius1 + radius2 == distance || Math.abs(radius1 - radius2) == distance) System.out.println("Intersect at one point");       
             else if (radius1 == radius2 && distance == 0) System.out.println("Intersect at infinitely many points (same circle)");
