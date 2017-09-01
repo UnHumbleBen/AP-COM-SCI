@@ -14,7 +14,8 @@ public class Lines
 {
     public static void main(String[] args) 
     {
-        while (true) {
+        while (true) 
+        {
             System.out.println("Choose one of the following methods to enter line 1");
             System.out.println("(1) by giving a point (x,y) and a slope m.");
             System.out.println("(2) by giving two points (x1, y1) and (x2, y2)");
@@ -22,91 +23,89 @@ public class Lines
             System.out.println("(4) as an equation x = a if the line is vertical");
             System.out.println("Enter 1, 2, 3, or 4");
             Scanner input = new Scanner(System.in);
-            int method1 = input.nextInt();
-            boolean isVertical1 = false;
-            double xVertical1 = 0; // for locating vertical lines 
-            double m1 = 0;
-            double m2 = 0;
-            double b1 = 0;
-            double b2 = 0;
+            int method1 = input.nextInt(); // get desired method
+            boolean isVertical1, isVertical2; // initiate vertical line boolean
+            isVertical1 = isVertical2 = false;
+            double xVertical1, xVertical2, m1, m2, b1, b2;
+            xVertical1 = xVertical2 = m1= m2= b1= b2 = 0; // for locating vertical lines 
+
             if (method1 == 1) 
             {
                 System.out.println("Enter x coordinate: ");
-                double x = input.nextInt();
+                double x = input.nextDouble();
                 System.out.println("Enter y coordinate: ");
-                double y = input.nextInt();
+                double y = input.nextDouble();
                 System.out.println("Enter slope: ");
-                m1 = input.nextInt();
+                m1 = input.nextDouble();
                 b1 = y - m1*x;
 
             }
             else if (method1 == 2)
             {
                 System.out.println("Enter x coordinate of point 1: ");
-                double x1 = input.nextInt();
+                double x1 = input.nextDouble();
                 System.out.println("Enter y coordinate of point 1: ");
-                double y1 = input.nextInt();
+                double y1 = input.nextDouble();
                 System.out.println("Enter x coordinate of point 2: ");
-                double x2 = input.nextInt();
+                double x2 = input.nextDouble();
                 System.out.println("Enter y coordinate of point 2: ");
-                double y2 = input.nextInt();
-                if (x2 != x1) 
+                double y2 = input.nextDouble();
+                if (x2 != x1) // non vertical line case
                 { 
                     m1 = (y2 - y1)/(x2-x1); 
                     b1 = y1 - m1*x1;
                 }
-                else 
+                else // vertical line case
                 {
                     isVertical1 = true;
-                    xVertical1 = x1;
+                    xVertical1 = x1; //locate the vertical line
                 }
             }
             else if (method1 == 3)
             {
                 System.out.println("Enter slope of line 1: ");
-                m1 = input.nextInt();
+                m1 = input.nextDouble();
                 System.out.println("Enter the y-intercept of line 1: ");
-                b1 = input.nextInt();
+                b1 = input.nextDouble();
             }
             else 
             {
                 System.out.println("Enter the x value of the vertical line: ");
 
-                xVertical1 = input.nextInt(); 
+                xVertical1 = input.nextDouble(); 
                 isVertical1 = true;
 
             }
 
+            // repeat same thing for line 2
             System.out.println("Choose one of the following methods to enter line 2");
             System.out.println("(1) by giving a point (x,y) and a slope m.");
             System.out.println("(2) by giving two points (x1, y1) and (x2, y2)");
             System.out.println("(3) as an equation in slope-intercept form y = mx + b");
             System.out.println("(4) as an equation x = a if the line is vertical");
             System.out.println("Enter 1, 2, 3, or 4");
-            int method2 = input.nextInt();
-            boolean isVertical2 = false;
-            double xVertical2 = 0; // for locating vertical lines 
+            int method2 = input.nextInt(); 
             if (method2 == 1) 
             {
                 System.out.println("Enter x coordinate: ");
-                double x = input.nextInt();
+                double x = input.nextDouble();
                 System.out.println("Enter y coordinate: ");
-                double y = input.nextInt();
+                double y = input.nextDouble();
                 System.out.println("Enter slope: ");
-                m2 = input.nextInt();
+                m2 = input.nextDouble();
                 b2 = y - m2*x;
 
             }
             else if (method2 == 2)
             {
                 System.out.println("Enter x coordinate of point 1: ");
-                double x1 = input.nextInt();
+                double x1 = input.nextDouble();
                 System.out.println("Enter y coordinate of point 1: ");
-                double y1 = input.nextInt();
+                double y1 = input.nextDouble();
                 System.out.println("Enter x coordinate of point 2: ");
-                double x2 = input.nextInt();
+                double x2 = input.nextDouble();
                 System.out.println("Enter y coordinate of point 2: ");
-                double y2 = input.nextInt();
+                double y2 = input.nextDouble();
                 if (x2 != x1) 
                 { 
                     m2 = (y2 - y1)/(x2-x1); 
@@ -121,28 +120,29 @@ public class Lines
             else if (method2 == 3)
             {
                 System.out.println("Enter slope of line 2: ");
-                m2 = input.nextInt();
+                m2 = input.nextDouble();
                 System.out.println("Enter the y-intercept of line 2: ");
-                b2 = input.nextInt();
+                b2 = input.nextDouble();
             }
             else 
             {
                 System.out.println("Enter the x value of the vertical line: ");
 
-                xVertical2 = input.nextInt(); 
+                xVertical2 = input.nextDouble(); 
                 isVertical2 = true;
 
             }
 
-            if (isVertical1 && isVertical2 && xVertical1 == xVertical2) 
+            // Compares the two lines 
+            if (isVertical1 && isVertical2 && xVertical1 == xVertical2) // true for equal vertical lines
             {
                 System.out.println("Lines are equal");
             }
-            else if (isVertical1 && isVertical2)
+            else if (isVertical1 && isVertical2) // true for parallel equal lines
             {
                 System.out.println("Lines are parallel"); 
             }
-            else if (m1 != m2)
+            else if (m1 != m2) 
             {
                 System.out.println("Lines intersect");
             }
@@ -161,8 +161,7 @@ public class Lines
             {
                 break; 
             }
-            
-
         }
     }
 }
+
