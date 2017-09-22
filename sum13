@@ -1,0 +1,15 @@
+public int sum13(int[] nums) {
+  int sum = 0;
+  for (int i = 0; i < nums.length; i++) 
+  {
+    if (nums[i] == 13) // if equals 13, skip the next number
+    {
+      i++;
+    }
+    else // since it does not equal 13, just add sum normally
+    {
+      sum = sum + nums[i];
+    }
+  }
+  return sum;
+}
