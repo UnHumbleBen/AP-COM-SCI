@@ -1,34 +1,20 @@
 public boolean twoTwo(int[] nums) {
-  for (int i = 0; i < nums.length; i++) // search loop
+  int twoCount = 0;
+  int pairCount = 0;
+  for (int i = 0; i < nums.length ; i++)
   {
-    if (nums[i] == 2) // look for 2s
+    if  (nums[i] == 2)
     {
-      if (i < nums.length-1) 
+      twoCount++;
+      if (i < nums.length - 1 && nums[i+1] == 2) 
       {
-        i++;    
-        int counter = 0;  // initate a counter variable to count number of 2s next to present 2
-        while (i < nums.length)
-        {
-          if (nums[i] == 2) 
-          { 
-            i++;     // skip consecutive two
-            counter++;  // count the 2
-          }
-          else if (counter == 0)
-          {
-            return false;
-          }
-          else
-          {
-            break;
-          }
-        }
+        pairCount++;
       }
-      else
+      else if (i > 0 && nums[i-1] == 2)
       {
-        return false;
+        pairCount++;
       }
     }
   }
-  return true;
+  return (twoCount == pairCount);
 }
