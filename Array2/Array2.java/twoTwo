@@ -6,14 +6,7 @@ public boolean twoTwo(int[] nums) {
     if  (nums[i] == 2)
     {
       twoCount++;
-      if (i < nums.length - 1 && nums[i+1] == 2) 
-      {
-        pairCount++;
-      }
-      else if (i > 0 && nums[i-1] == 2)
-      {
-        pairCount++;
-      }
+      if (i < nums.length - 1 && nums[i+1] == 2 || i > 0 && nums[i-1] == 2 ) pairCount++;
     }
   }
   return (twoCount == pairCount);
