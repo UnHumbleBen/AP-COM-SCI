@@ -10,8 +10,9 @@ package blackjack;
  * @author Benjamin
  */
 import java.util.ArrayList;
+import java.util.*;
 public class Deck {
-    ArrayList<Card> deck;
+    static ArrayList<Card> deck;
     public Deck() {
         deck = new ArrayList<Card>();
         for (int i = 0; i < 52; i++) {
@@ -33,5 +34,13 @@ public class Deck {
         for (int i = 0; i < deck.size(); i++) {
             System.out.println(deck.get(i).getName());
         }
+    }
+    
+    public static Card removeCard() {
+        Random rand = new Random();
+        int n = rand.nextInt(52);
+        Card temp = deck.get(n);
+        deck.remove(deck.get(n));
+        return temp;
     }
 }
