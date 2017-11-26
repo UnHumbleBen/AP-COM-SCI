@@ -1,46 +1,62 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package blackjack;
 
-/**
- *
- * @author Benjamin
- */
-import java.util.ArrayList;
 import java.util.*;
+
 public class Deck {
-    static ArrayList<Card> deck;
+
+    ArrayList<Card> deck;
+
     public Deck() {
-        deck = new ArrayList<Card>();
+        deck = new ArrayList<>();
         for (int i = 0; i < 52; i++) {
             String name = "";
             int value = i % 13;
-            if (i / 13 == 0) name = "Spade";
-            if (i / 13 == 1) name = "Club";
-            if (i / 13 == 2) name = "Heart";
-            if (i / 13 == 3) name = "Diamond";
-            
-            Card n = new Card(name, value);     
+            if (i / 13 == 0) {
+                name = "Spades";
+            }
+            if (i / 13 == 1) {
+                name = "Clubs";
+            }
+            if (i / 13 == 2) {
+                name = "Hearts";
+            }
+            if (i / 13 == 3) {
+                name = "Diamonds";
+            }
+
+            Card n = new Card(name, value);
             deck.add(n);
         }
     }
+
     public void deckSize() {
         System.out.println(deck.size());
     }
+
     public void printDeck() {
         for (int i = 0; i < deck.size(); i++) {
             System.out.println(deck.get(i).getName());
         }
     }
-    
-    public static Card removeCard() {
+
+    public Card removeCard() {
         Random rand = new Random();
-        int n = rand.nextInt(52);
+        int n = rand.nextInt(deck.size());
         Card temp = deck.get(n);
-        deck.remove(deck.get(n));
+        //System.out.println("Added Card: " + temp.getName());
+        deck.remove(n);
         return temp;
+    }
+
+    // testing the scores
+    public Card removeAce() {
+        for (int i = 0; i < deck.size(); i++) {
+            if (deck.get(i).getPoints() == 11) {
+                Card temp = deck.get(i);
+                deck.remove(deck.get(i));
+                return temp;
+            }
+        }
+        return null;
     }
 }
