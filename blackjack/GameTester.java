@@ -15,7 +15,7 @@ public class GameTester {
                 System.out.println("Press 1 to try again, Press 2 to stop");
                 if (in.nextInt() != 1) {
                     break;
-                } 
+                }
             } else {
                 ArrayList<Player> players = new ArrayList<>();
                 for (int i = 0; i < countPlayers; i++) {
@@ -48,7 +48,7 @@ public class GameTester {
                         if (true) { // for players
                             System.out.println("Your hand is: ");
                             players.get(i).printHand();
-                            System.out.println("You score is " + players.get(i).getScore());
+                            System.out.println("Your score is " + players.get(i).getScore());
 
                             if (players.get(i).getScore() == 0) {
                                 System.out.println("You went over 21!");
@@ -80,11 +80,25 @@ public class GameTester {
 
                 //dealer hits
                 System.out.println("Dealer's Turn");
-                while (true) {
+                System.out.println("The Dealers hand is: ");
+                dealer.printHand();
+                System.out.println("His score is " + dealer.getScore());
+                while (dealer.getScore() < 17) {
+                    System.out.println("The Dealer hits");
+                    dealer.getCard(deck);
+
                     System.out.println("The Dealers hand is: ");
                     dealer.printHand();
                     System.out.println("His score is " + dealer.getScore());
+                    
+                    System.out.println("Press 1 to continue");
+                    int useless = in.nextInt();
 
+                    if (dealer.getScore() == 0) {
+                        System.out.println("Busted!!!");
+                        break;
+                    }
+                    /*
                     System.out.println("Press 1 to continue");
                     int user = in.nextInt();
                     if (dealer.getScore() >= highest) {
@@ -100,7 +114,18 @@ public class GameTester {
                         System.out.println("The Dealer hits");
                         dealer.getCard(deck);
                     }
+                     */
                 }
+                System.out.println("Press 1 to see the winner");
+                int useless1 = in.nextInt();
+
+                if (dealer.getScore() >= highest) {
+                    System.out.println("Dealer wins!");
+                } else {
+                    System.out.println(players.get(index).getName() + " IS THE WINNER");
+                    System.out.println("with a score of " + players.get(index).getScore());
+                }
+
                 System.out.println("Press 1 to play another game, Press 2 to stop");
                 if (in.nextInt() != 1) {
                     break;
